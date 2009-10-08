@@ -1,0 +1,24 @@
+Instruções para utilizar o repositorio SVN do projeto food web delivery
+
+O projeto está no google code e pode ser acessado pelo endereço: http://code.google.com/p/fooddeliveryweb/
+
+Para acessar a estrutura de diretórios e os arquivos, é necessário um cliente SVN, o RapidSVN pode ser utilizado, uma versão portable (Só descompactar e executar) para windows está disponibilizada em http://rapidshare.com/files/28919598/RapidSVNPortable.exe
+
+Execute o arquivo, ele descompactará o cliente SVN na pasta escolhida. Depois disso execute o RapidSVNPortable.exe
+
+Quando ele for executado, uma tela parecida com o windows explorer será mostrada. Vá em Repository --> Checkout
+
+Quando uma tela Checkout aparecer, em URL digite: svn checkout https://fooddeliveryweb.googlecode.com/svn/trunk/ fooddeliveryweb --username SEU_USUARIO_GOOGLE
+
+e em Destination Directory, escolha um diretorio de sua maquina para salvar os diretorios e arquivos do projeto.
+
+Clique em OK, quando aparecer uma tela solicitando usuario e senha, coloque no usuario, seu usuario no google e para a senha acesse a aba Source da página do projeto e o link disponível em :  When prompted, enter your generated googlecode.com password. Essa página deverá te mostrar sua senha (Your googlecode.com password: )
+
+Quando clicar em OK o RapidSVN fará o download das pastas e aquivos para a pasta selecionada.
+
+Alguns conceitos:
+
+Repositorio - Onde ficam as pastas e aquivos do projeto (no nosso caso no google)
+Checkout - Fazer o download a primeira vez do repositorio
+Update - "Atualiza" os diretorios e arquivos da sua maquina com o repositorio
+Commit - Envia para o resposito o arquivo, com as alterações que vc fez.
