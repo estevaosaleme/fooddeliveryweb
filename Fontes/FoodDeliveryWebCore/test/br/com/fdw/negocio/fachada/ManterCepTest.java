@@ -40,8 +40,7 @@ public class ManterCepTest {
         System.out.println("ListarCeps");
         ManterCep instance = new ManterCep();
         List expResult = new ArrayList();
-        List result = instance.ListarCeps();
-        // banco deve estar vazio para passar no teste de conexão e listagem
+        List result = instance.listarCeps();
         assertEquals(expResult.size(), result.size());
     }
 

@@ -36,7 +36,7 @@ public class Cep extends PersistentObject {
     private String nomeLogradouro;
     @Basic(optional = false)
     @Column(name = "CEP_NM_BAIRRO")
-    private short nomeBairro;
+    private String nomeBairro;
     @Basic(optional = false)
     @Column(name = "CEP_NM_CIDADE")
     private String nomeCidade;
@@ -60,7 +60,7 @@ public class Cep extends PersistentObject {
         this.codigoCep = cepCdCep;
     }
 
-    public Cep(Integer codigoCep, String numeroCep, String nomeLogradouro, short nomeBairro, String nomeCidade, String siglaEstado) {
+    public Cep(Integer codigoCep, String numeroCep, String nomeLogradouro, String nomeBairro, String nomeCidade, String siglaEstado) {
         this.codigoCep = codigoCep;
         this.numeroCep = numeroCep;
         this.nomeLogradouro = nomeLogradouro;
@@ -93,11 +93,11 @@ public class Cep extends PersistentObject {
         this.nomeLogradouro = nomeLogradouro;
     }
 
-    public short getNomeBairro() {
+    public String getNomeBairro() {
         return nomeBairro;
     }
 
-    public void setNomeBairro(short nomeBairro) {
+    public void setNomeBairro(String nomeBairro) {
         this.nomeBairro = nomeBairro;
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ManterCep {
 
-    public List<Cep> ListarCeps()
+    public List<Cep> listarCeps()
     {
         CepProcess cepProcess = new CepProcess();
         return cepProcess.getAll();
