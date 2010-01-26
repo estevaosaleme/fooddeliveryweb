@@ -20,7 +20,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cep")
-@NamedQueries({@NamedQuery(name = "Cep.findAll", query = "SELECT c FROM Cep c"), @NamedQuery(name = "Cep.findByCodigo", query = "SELECT c FROM Cep c WHERE c.codigoCep = :codigoCep")})
+@NamedQueries(
+{
+    @NamedQuery(name = "Cep.findAll", query = "SELECT c FROM Cep c"),
+    @NamedQuery(name = "Cep.findByCodigo", query = "SELECT c FROM Cep c WHERE c.codigoCep = :codigoCep"),
+    @NamedQuery(name = "Cep.findByNumeroCep", query = "SELECT c FROM Cep c WHERE c.numeroCep = :numeroCep")
+})
 public class Cep extends PersistentObject {
     private static final long serialVersionUID = 1L;
     @Id
