@@ -69,12 +69,4 @@ public abstract class GenericDAO<T extends PersistentObject> {
         List<T> lista = ConnFactory.getEntityManager().createNamedQuery(namedQuery).getResultList();
         return lista;
     }
-
-//    public T getById(int Id) {
-//        final Class<T> myClass = this.getMyClass();
-//
-//        String namedQuery = myClass.getSimpleName() + ".findByCodigo";
-//        T object = (T)ConnFactory.getEntityManager().createNamedQuery(namedQuery).getSingleResult();
-//        return object;
-//    }
 }
