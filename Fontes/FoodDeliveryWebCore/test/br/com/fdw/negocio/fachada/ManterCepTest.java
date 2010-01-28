@@ -35,6 +35,7 @@ public class ManterCepTest {
     /**
      * Test of ListarCeps method, of class ManterCep.
      */
+
     @Test
     public void testListarCeps() {
         System.out.println("ListarCeps");
@@ -56,10 +57,10 @@ public class ManterCepTest {
         System.out.println("IncluirCep");
         ManterCep instance = new ManterCep();
         Cep cep = new Cep();
-        cep.setNomeBairro("Praia do Canto");
-        cep.setNomeCidade("Vitória");
+        cep.setNomeBairro("Bairro Teste");
+        cep.setNomeCidade("São Paulo");
         cep.setNomeLogradouro("Rua Aleixo Neto");
-        cep.setNumeroCep("29051-000");
+        cep.setNumeroCep("29123-000");
         cep.setSiglaEstado("ES");
 
         Cep result = instance.incluirCep(cep);

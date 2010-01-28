@@ -24,7 +24,13 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "cliente")
-@NamedQueries({@NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"), @NamedQuery(name = "Cliente.findByCodigo", query = "SELECT c FROM Cliente c WHERE c.codigoCliente = :codigoCliente")})
+@NamedQueries(
+{
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
+    @NamedQuery(name = "Cliente.findByCodigo", query = "SELECT c FROM Cliente c WHERE c.codigoCliente = :codigoCliente"),
+    @NamedQuery(name = "Cliente.findByNumeroCpf", query = "SELECT c FROM Cliente c WHERE c.numeroCpf = :numeroCpf")
+})
+
 public class Cliente extends PersistentObject {
     private static final long serialVersionUID = 1L;
     @Id
