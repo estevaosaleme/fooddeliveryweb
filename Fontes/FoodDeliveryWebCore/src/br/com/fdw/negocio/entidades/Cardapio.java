@@ -22,7 +22,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "cardapio")
-@NamedQueries({@NamedQuery(name = "Cardapio.findAll", query = "SELECT c FROM Cardapio c"), @NamedQuery(name = "Cardapio.findByCodigo", query = "SELECT c FROM Cardapio c WHERE c.codigoCardapio = :codigoCardapio")})
+@NamedQueries(
+{
+    @NamedQuery(name = "Cardapio.findAll", query = "SELECT c FROM Cardapio c"),
+    @NamedQuery(name = "Cardapio.findByCodigo", query = "SELECT c FROM Cardapio c WHERE c.codigoCardapio = :codigoCardapio"),
+    @NamedQuery(name = "Cardapio.findByNomeCardapio", query = "SELECT c FROM Cardapio c WHERE c.nomeCardapio = :nomeCardapio")
+})
 public class Cardapio extends PersistentObject {
     private static final long serialVersionUID = 1L;
     @Id

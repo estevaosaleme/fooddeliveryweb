@@ -19,7 +19,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "prato")
-@NamedQueries({@NamedQuery(name = "Prato.findAll", query = "SELECT p FROM Prato p"), @NamedQuery(name = "Prato.findByCodigo", query = "SELECT p FROM Prato p WHERE p.codigoPrato = :codigoPrato")})
+@NamedQueries(
+{
+    @NamedQuery(name = "Prato.findAll", query = "SELECT p FROM Prato p"),
+    @NamedQuery(name = "Prato.findByCodigo", query = "SELECT p FROM Prato p WHERE p.codigoPrato = :codigoPrato"),
+    @NamedQuery(name = "Prato.findByNomeECardapio", query = "SELECT p FROM Prato p WHERE p.nomePrato = :nomePrato AND p.cardapio.codigoCardapio = :codigoCardapio")
+
+}
+)
 public class Prato extends PersistentObject {
     private static final long serialVersionUID = 1L;
     @Id
