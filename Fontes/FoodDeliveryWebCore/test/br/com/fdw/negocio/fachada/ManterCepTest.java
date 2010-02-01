@@ -60,7 +60,7 @@ public class ManterCepTest {
         cep.setNomeBairro("Bairro Teste");
         cep.setNomeCidade("São Paulo");
         cep.setNomeLogradouro("Rua Aleixo Neto");
-        cep.setNumeroCep("29123-000");
+        cep.setNumeroCep("29123-100");
         cep.setSiglaEstado("ES");
 
         Cep result = instance.incluirCep(cep);
