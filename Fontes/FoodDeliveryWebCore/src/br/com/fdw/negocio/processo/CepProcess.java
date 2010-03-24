@@ -66,7 +66,7 @@ public class CepProcess {
         return this.dao.remove(codigoCep);
     }
 
-    private Cep getByNumeroCep(String numeroCep)
+    public Cep getByNumeroCep(String numeroCep)
     {
         return this.dao.getByNumeroCep(numeroCep);
     }

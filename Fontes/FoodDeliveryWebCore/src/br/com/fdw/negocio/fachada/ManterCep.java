@@ -44,5 +44,10 @@ public class ManterCep {
         return this.cepProcess.removeCep(codigoCep);
     }
 
+    public Cep getByNumeroCep(String numeroCep)
+    {
+        return this.cepProcess.getByNumeroCep(numeroCep);
+    }
+
 
 }
