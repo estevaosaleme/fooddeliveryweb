@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : top
+    Created on : 18/03/2010, 21:19:37
+    Author     : pedro
+-->
+
+<div id="topo" class="blocoPagina" xmlns:f="http://java.sun.com/jsf/core" >
+  <f:subview id="top">
+    <div id="topoEsquerda" class="blocoPagina">
+        <img src="../resources/imagens/logoSistema.gif" alt="FDW" />
+    </div>
+    <div id="topoDireita" class="blocoPagina">
+        <img src="../resources/imagens/chave.gif" alt="Empresa" class="imgLogoEmpresa" /><br />
+            <div id="divPerfil">
+                <img src="../resources/imagens/chave.gif" alt="Chave do usuário" />
+                    <span>João da Silva</span><br />
+                    <span>Administrador</span>
+            </div>
+    </div>
+    <div id="bordaTopo" class="blocoPagina"> </div>
+  </f:subview>
+</div>

@@ -1,0 +1,122 @@
+@import url("estrutura.css");
+@import url("superfish/superfish.css");
+@import url("superfish/superfish-vertical.css");
+
+body
+{
+	margin:0px;
+	padding: 0px;
+	background-image:url('../imagens/bgFundoPrincipal.gif');
+	background-repeat:repeat-x;
+	font-family: segoe ui, Arial, sans-serif;
+	font-size:11px;
+	text-align:left;	
+	min-width: 980px;
+	color: #433F38;
+}
+
+img
+{
+	border:0px !important;
+}
+
+/* login */
+#divDialogoLogin
+{
+	margin:0px auto 0px auto;
+	background-color: #ffffff;
+	padding-left: 300px;
+	width: 680px;
+	margin-right:-12px; /* ie6 e ie7 hack */
+}
+
+/* form */
+h1.tituloPrincipal
+{
+	font-family: Arial;
+	font-size:15px;
+	border-bottom:#F0F0E5 solid 1px;
+	background-image:url('../imagens/setaTitulo.gif');
+	background-repeat:no-repeat;
+	background-position:left center;
+	padding-left:15px;
+	padding-bottom: 2px;
+}
+
+.fieldsetPadrao 
+{ 
+	width: 730px;
+	border: solid 1px #F0F0E5;
+	padding:6px 6px 6px 6px;
+}
+
+div.colE
+{
+	float:left;
+	padding-right: 10px;
+	padding-bottom:14px;
+}
+
+div.colD
+{
+	float:right;
+	padding-right:60px;
+	padding-bottom:14px;
+}
+
+div.e
+{
+	width: 70px;
+	margin: 0px;
+	padding: 2px; 
+	float: left;
+	text-align: right;
+}
+
+div.d
+{
+	width: 220px;
+	margin: 0px;
+	padding: 2px; 
+	float: right; 
+	text-align: left;
+}
+
+div.m
+{
+	clear: both;
+	width: 300px;
+	padding: 10px;
+}
+
+/* inputs */
+input.textBox, .textBoxDate, .dropDown
+{
+	border:solid 1px #F0F0E5;	
+	background-color: #FAFAF4;	
+	font-size:11px;
+	padding: 2px 2px 2px 2px;
+}
+
+input.list
+{
+	border:solid 1px #F0F0E5;
+	width:100%;
+	height:120px;
+}
+
+input.submit 
+{
+    border: none;
+    color: #ffffff;
+    font-family: segoe ui, Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    font-size:11px;
+}
+.botaoPequeno { height: 28px; width: 38px; background: url('../imagens/btPadraoPequeno.gif') no-repeat top left; background-position: 0px 3px; }
+.botaoPequeno:hover { height: 28px; width: 38px; background: url('../imagens/btPadraoPequenoHover.gif') no-repeat top left; background-position: 0px 3px; }
+.botaoMedio { height: 28px; width: 73px; background: url('../imagens/btPadraoMedio.gif') no-repeat top left; background-position: 0px 3px; }
+.botaoMedio:hover { height: 28px; width: 73px; background: url('../imagens/btPadraoMedioHover.gif') no-repeat top left; background-position: 0px 3px; }
+.botaoGrande { height: 28px; width: 112px; background: url('../imagens/btPadraoGrande.gif') no-repeat top left; background-position: 0px 3px; }
+.botaoGrande:hover { height: 28px; width: 112px; background: url('../imagens/btPadraoGrandeHover.gif') no-repeat top left; background-position: 0px 3px; }

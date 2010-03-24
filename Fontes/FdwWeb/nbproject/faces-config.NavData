@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only">
+        <Node id="adm/manterCep.jsp" x="571" y="249" zoom="true"/>
+        <Node id="adm/HomeAdm.jsp" x="169" y="174" zoom="true"/>
+        <Node id="Page1.jsp" x="77" y="51" zoom="true"/>
+    </Scope>
+    <Scope Scope="Project">
+        <Node id="adm/HomeAdm.jsp" x="89" y="250" zoom="true"/>
+        <Node id="adm/manterCep.jsp" x="291" y="418" zoom="true"/>
+        <Node id="adm/manterFormasPagamento.jsp" x="582" y="457" zoom="true"/>
+        <Node id="adm/manterCardapio.jsp" x="606" y="37" zoom="true"/>
+        <Node id="adm/manterPedido.jsp" x="24" y="468" zoom="true"/>
+        <Node id="adm/manterPrato.jsp" x="605" y="294" zoom="true"/>
+        <Node id="adm/*" x="360" y="192" zoom="false"/>
+        <Node id="Page1.jsp" x="6" y="23" zoom="false"/>
+        <Node id="adm/manterCliente.jsp" x="604" y="166" zoom="true"/>
+        <Node id="adm/manterEstabelecimento.jsp" x="284" y="32" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations">
+        <Node id="adm/manterCep.jsp" x="571" y="249" zoom="true"/>
+        <Node id="adm/HomeAdm.jsp" x="169" y="174" zoom="true"/>
+        <Node id="Page1.jsp" x="77" y="51" zoom="true"/>
+    </Scope>
+</Scene>

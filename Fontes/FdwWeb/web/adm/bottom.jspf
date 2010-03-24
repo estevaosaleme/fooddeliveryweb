@@ -1,0 +1,8 @@
+<div id="rodape" class="blocoPagina" xmlns:f="http://java.sun.com/jsf/core" >
+  <f:subview id="bottom">
+    <div id="conteudoRodape">
+        <hr class="linhaHorizontal" />FDW (c) 2010 | 1.0.0
+    </div>
+    <div id="bordaRodape" class="blocoPagina"> </div>
+  </f:subview>
+</div>

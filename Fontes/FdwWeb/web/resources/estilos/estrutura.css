@@ -1,0 +1,99 @@
+.container 
+{ 
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+.blocoPagina 
+{ 
+	display: inline; 
+	float: left; 
+}
+
+div#principal 
+{
+	background-image:url('../imagens/bgFundoBranco.gif');
+	background-repeat:repeat;
+	margin-top:-5px; /* ie6 e ie7 hack */
+}
+
+div#pagina 
+{ 
+	width: 980px; 
+}
+
+/* Topo */
+div#topo 
+{ 
+	height: 76px;
+}
+
+div#topoEsquerda
+{ 
+	width:250px;
+	float:left;
+}
+
+div#topoDireita 
+{ 
+	padding-top: 12px;
+	font-family:Tahoma;
+	font-size:11px;
+	color:#ffffff;
+	text-align:right;
+	width: 720px;
+}
+.imgLogoEmpresa { padding-bottom:6px; }
+.imgLogoEmpresaMeio { padding-top:18px; }
+
+div#bordaTopo
+{
+	width: 980px; 
+	height:10px;
+	background-image:url('../imagens/bgBordaTopo.gif');
+	background-repeat:no-repeat;
+}
+
+/* Menu */
+div.menuLateral 
+{ 
+	width: 220px;
+}
+div#bordaMenu { background-color: #FAFAF4; margin: 3px 0px 12px 12px; border: solid 1px #F0F0E5; display:inline-block; width:194px }
+ul#menuSistema { padding: 8px 0px 0px 8px; }
+
+
+/* Conte�do da p�gina (formul�rio) */
+div#conteudoPagina
+{
+	width: 748px; 
+	padding-right: 12px;
+}
+
+
+/* Rodape */
+div#rodape 
+{
+	background-image:url('../imagens/bgFundoBranco.gif');
+	background-repeat:repeat; 
+	width: 980px; 
+	text-align: center;
+}
+.linhaHorizontal
+{
+	height: 1px; border-bottom: 1px solid #F0F0E5; border-top: 1px solid #FAFAF4; border-right: 1px solid #FAFAF4; border-left: 1px solid #FAFAF4;
+}
+
+div#bordaRodape
+{
+	width: 980px; 
+	height:10px;
+	background-image:url('../imagens/bgBordaRodape.gif');
+	background-repeat:no-repeat;
+}
+
+div#conteudoRodape
+{
+	font-size:11px;
+	padding: 12px 12px 3px 12px;
+}

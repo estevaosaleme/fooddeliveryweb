@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : menu
+    Created on : 18/03/2010, 21:15:56
+    Author     : pedro
+-->
+<div class="blocoPagina menuLateral" xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+    <f:subview id="menu">
+        <div id="bordaMenu">
+            <ul class="sf-menu sf-vertical" id="menuSistema">
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterCardapio_action}" id="hlManterCardapio" text="Manter Cardápio"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterCep_action}" id="hlManterCep" text="Manter CEP"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterCliente_action}" id="hlManterCliente" text="Manter Cliente"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterEstabelecimento_action}" id="hlManterEstabelecimento" text="Manter Estabelecimento"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterFormaPagamento_action}" id="hlManterFormaPagamento" text="Manter Forma Pagamento"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterPrato_action}" id="hlManterPrato" text="Manter Prato"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterPedido_action}" id="hlManterPedido" text="Manter Pedido"/></li>
+            </ul>
+        </div>
+    </f:subview>
+</div>
