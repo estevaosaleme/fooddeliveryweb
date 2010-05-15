@@ -43,6 +43,7 @@
                                         </webuijsf:table>
                                         <webuijsf:messageGroup id="grpMsg"/>
                                     </h:panelGrid>
+                                    <h:panelGrid columns="2" id="panelCampos2">
                                     <h:panelGrid columns="2" id="panelCampos">
                                         <webuijsf:label for="sttcodigoPrato" id="lblcodigoPrato" text="Código Prato"/>
                                         <webuijsf:staticText id="sttcodigoPrato" text="#{RequestBean1.prato.codigoPrato}"/>
@@ -58,16 +59,12 @@
                                         <webuijsf:textField columns="10" id="txtcardapio" maxLength="10"
                                             onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'panelCampos:txtcardapio');"
                                             text="#{RequestBean1.cardapioTemporario}" valueChangeListenerExpression="#{adm$manterPrato.txtcardapio_processValueChange}"/>
-                                        <webuijsf:label for="txtfoto" id="lblfoto" text="Foto"/>
-                                        <webuijsf:image alt="#{RequestBean1.prato.nomePrato}" height="150" id="imgFoto" url="/ImagemTempSession" width="210"/>
-                                        <webuijsf:label for="uplFoto" id="lbluplfoto" text="Upload"/>
-                                        <webuijsf:upload columns="50" id="uplFoto"
-                                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'panelCampos:uplFoto');" valueChangeListenerExpression="#{adm$manterPrato.uplFoto_processValueChange}"/>
+                                        <webuijsf:label for="uplFoto" id="lbluplfoto" text="Foto: "/>
+                                        <webuijsf:upload id="upload1" uploadedFile="#{RequestBean1.uploadedFile}" />
+                                    </h:panelGrid>
+                                        <webuijsf:image alt="#{RequestBean1.prato.nomePrato}" height="150" id="imgFoto" url="/ImagemTempSession" width="210" border="1"/>
                                     </h:panelGrid>
                                     <webuijsf:hiddenField id="hddcodigoPrato" text="#{RequestBean1.prato.codigoPrato}"/>
-                                    <h:inputHidden value="#{RequestBean1.prato.foto}">  
-                                        <f:converter converterId="objectConverter" />  
-                                    </h:inputHidden>
                                     <h:panelGrid columns="5" id="panelBotoes">
                                         <webuijsf:button actionExpression="#{adm$manterPrato.btnLimpar_action}" id="btnLimpar" text="Limpar Campos"/>
                                         <webuijsf:button actionExpression="#{adm$manterPrato.btnSalvarNovo_action}" id="btnSalvarNovo" text="Salvar Novo"/>

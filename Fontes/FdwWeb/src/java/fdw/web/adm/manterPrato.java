@@ -10,7 +10,6 @@ import br.com.fdw.negocio.entidades.Prato;
 import br.com.fdw.negocio.fachada.ManterCardapio;
 import br.com.fdw.negocio.fachada.ManterPrato;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.UploadedFile;
 import javax.faces.FacesException;
 import fdw.web.SessionBean1;
 import fdw.web.RequestBean1;
@@ -42,7 +41,6 @@ public class manterPrato extends AbstractPageBean {
     }
 
     // </editor-fold>
-
 
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -173,6 +171,7 @@ public class manterPrato extends AbstractPageBean {
             Prato prato = manterprato.consultarPrato(selecionado);
             getRequestBean1().setCardapioTemporario(prato.getCardapio().getCodigoCardapio().toString());
             getRequestBean1().setPrato(prato);
+            getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
         }
         catch (Exception e) {
                 error(e.getMessage());
@@ -189,6 +188,7 @@ public class manterPrato extends AbstractPageBean {
         try {
             Prato prato = getRequestBean1().getPrato();
             ManterPrato facade = new ManterPrato();
+            prato.setFoto(getFoto());
             facade.incluirPrato(prato);
             info("Registro inserido com sucesso!");
             limparCamposFormulario();
@@ -203,6 +203,7 @@ public class manterPrato extends AbstractPageBean {
         try {
             Prato prato = getRequestBean1().getPrato();
             ManterPrato facade = new ManterPrato();
+            prato.setFoto(getFoto());
             facade.atualizarPrato(prato);
             info("Registro atualizado com sucesso!");
             limparCamposFormulario();
@@ -227,20 +228,21 @@ public class manterPrato extends AbstractPageBean {
         return null;
     }
 
-   public void uplFoto_processValueChange(ValueChangeEvent event) {
-       UploadedFile uploadedFile = (UploadedFile) event.getNewValue();
-       if( uploadedFile != null && uploadedFile.getBytes().length != 0 )
+   public byte[] getFoto() {
+       
+       if(getRequestBean1().getUploadedFile() != null && getRequestBean1().getUploadedFile().getBytes().length != 0 )
        {
-           byte[] foto = uploadedFile.getBytes();
-           if (!uploadedFile.getOriginalName().toUpperCase().contains("JPG"))
+           byte[] foto = getRequestBean1().getUploadedFile().getBytes();
+           if (!getRequestBean1().getUploadedFile().getOriginalName().toUpperCase().contains("JPG"))
            {
                info("Apenas imagens JPG são aceitas.");
-               return;
+               return null;
            }
-           getRequestBean1().getPrato().setFoto(foto);
-           getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
+           return foto;
        }
+       return null;
     }
+
 
    public void txtcardapio_processValueChange(ValueChangeEvent event) {
         String codCard = (String) event.getNewValue();
@@ -261,6 +263,7 @@ public class manterPrato extends AbstractPageBean {
                 info("Falha ao recuperar cardápio");
             }
         }
+        getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
    }
 }
 

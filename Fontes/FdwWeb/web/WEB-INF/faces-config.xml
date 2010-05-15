@@ -119,11 +119,8 @@
         <managed-bean-class>fdw.web.adm.manterFormasPagamento</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    <converter>
-        <converter-id>objectConverter</converter-id>
-        <converter-class>fdw.util.ObjectConverter</converter-class>
-    </converter>
 </faces-config>
+
 
 
 

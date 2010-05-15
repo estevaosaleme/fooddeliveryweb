@@ -7,6 +7,7 @@ package fdw.web;
 
 import br.com.fdw.negocio.entidades.*;
 import com.sun.rave.web.ui.appbase.AbstractRequestBean;
+import com.sun.webui.jsf.model.UploadedFile;
 import javax.faces.FacesException;
 
 /**
@@ -47,6 +48,9 @@ public class RequestBean1 extends AbstractRequestBean {
 
     private String CepTemporario;
     private String CardapioTemporario;
+    transient private UploadedFile uploadedFile;
+
+
 
     /**
      * <p>Construct a new request data bean instance.</p>
@@ -251,4 +255,12 @@ public class RequestBean1 extends AbstractRequestBean {
     public void setCardapioTemporario(String CardapioTemporario) {
         this.CardapioTemporario = CardapioTemporario;
     }
+
+    public UploadedFile getUploadedFile() {
+        return this.uploadedFile;
+    }
+    public void setUploadedFile(UploadedFile uploadedFile) {
+        this.uploadedFile = uploadedFile;
+    }
+
 }
