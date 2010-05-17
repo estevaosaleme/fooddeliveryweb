@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : bottom
+    Created on : 15/05/2010, 19:15:09
+    Author     : pedro
+-->
+
+<div style="-rave-layout: grid; width: 600px; height: 50px" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:webuijsf="http://www.sun.com/webui/webuijsf" >
+  <f:subview id="bottom">
+      <div id="footer">
+		 <h:panelGrid columns="1" id="panelBot" width="550">
+                     <h:panelGrid columns="2" id="panelsobre" width="550">
+                        <webuijsf:staticText text="Food Delivery Web" id="fdd" />
+                        <webuijsf:hyperlink id="fto" text="Free Templates Online" url="http://www.freetemplatesonline.com" target="_blank"/>
+                     </h:panelGrid>
+                     <h:panelGrid columns="5" id="panelLinks" width="550">
+                        <webuijsf:hyperlink id="hlkHome" actionExpression="#{portal$bottom.hlkHome_action}" text="Home" />
+                        <webuijsf:hyperlink id="hlkSobre" actionExpression="#{portal$bottom.hlkSobre_action}" text="Sobre Nós" />
+                        <webuijsf:hyperlink id="hlkAParceiros" actionExpression="#{portal$bottom.hlkParceiros_action}" text="Parceiros" />
+                        <webuijsf:hyperlink id="hlkNoticias" actionExpression="#{portal$bottom.hlkNoticias_action}" text="Notícias" />
+                        <webuijsf:hyperlink id="hlkAdministracao" actionExpression="#{portal$bottom.hlkAdministracao_action}" text="Administração" />
+                     </h:panelGrid>
+                 </h:panelGrid>
+	</div>
+  </f:subview>
+</div>

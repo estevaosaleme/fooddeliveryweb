@@ -2,7 +2,7 @@
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.web.project</type>
     <configuration>
-        <creator-data xmlns="http://www.sun.com/creator/ns" jsf.current.theme="woodstock-theme-default" jsf.pagebean.package="fdw.web" jsf.project.libraries.dir="lib" jsf.project.version="4.0" jsf.startPage="Page1.jsp"/>
+        <creator-data xmlns="http://www.sun.com/creator/ns" jsf.current.theme="woodstock-theme-default" jsf.pagebean.package="fdw.web" jsf.project.libraries.dir="lib" jsf.project.version="4.0" jsf.startPage="portal/HomePortal.jsp"/>
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
             <name>FdwWeb</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>

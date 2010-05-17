@@ -12,11 +12,6 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>Page1</managed-bean-name>
-        <managed-bean-class>fdw.web.Page1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>ApplicationBean1</managed-bean-name>
         <managed-bean-class>fdw.web.ApplicationBean1</managed-bean-class>
         <managed-bean-scope>application</managed-bean-scope>
@@ -47,10 +42,14 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <navigation-rule>
-        <from-view-id>/Page1.jsp</from-view-id>
+        <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>acessoAdm</from-outcome>
             <to-view-id>/adm/HomeAdm.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>acessoPortal</from-outcome>
+            <to-view-id>/portal/HomePortal.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -119,7 +118,84 @@
         <managed-bean-class>fdw.web.adm.manterFormasPagamento</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$HomePortal</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.HomePortal</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$top</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.top</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$bottom</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.bottom</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+     <navigation-rule>
+        <from-view-id>/portal/*</from-view-id>
+        <navigation-case>
+            <from-outcome>HomePortal</from-outcome>
+            <to-view-id>/portal/HomePortal.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Mapa</from-outcome>
+            <to-view-id>/portal/Indisponivel.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Contato</from-outcome>
+            <to-view-id>/portal/Indisponivel.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Estabelecimento</from-outcome>
+            <to-view-id>/portal/Estabelecimentos.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Cadastro</from-outcome>
+            <to-view-id>/portal/Cadastro.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Pedido</from-outcome>
+            <to-view-id>/portal/Pedido.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Sobre</from-outcome>
+            <to-view-id>/portal/Indisponivel.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>indisponivel</from-outcome>
+            <to-view-id>/portal/Indisponivel.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>portal$Indisponivel</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.Indisponivel</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$Cadastro</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.Cadastro</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$Estabelecimentos</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.Estabelecimentos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$Pedido</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.Pedido</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
+
+
+
+
+
+
+
 
 
 

@@ -51,6 +51,9 @@ public class RequestBean1 extends AbstractRequestBean {
     transient private UploadedFile uploadedFile;
 
 
+    private String cpfLogin;
+    private String senhaLogin;
+    private String senhaConfirma;
 
     /**
      * <p>Construct a new request data bean instance.</p>
@@ -262,5 +265,49 @@ public class RequestBean1 extends AbstractRequestBean {
     public void setUploadedFile(UploadedFile uploadedFile) {
         this.uploadedFile = uploadedFile;
     }
+
+    /**
+     * @return the cpfLogin
+     */
+    public String getCpfLogin() {
+        return cpfLogin;
+    }
+
+    /**
+     * @param cpfLogin the cpfLogin to set
+     */
+    public void setCpfLogin(String cpfLogin) {
+        this.cpfLogin = cpfLogin;
+    }
+
+    /**
+     * @return the senhaLogin
+     */
+    public String getSenhaLogin() {
+        return senhaLogin;
+    }
+
+    /**
+     * @param senhaLogin the senhaLogin to set
+     */
+    public void setSenhaLogin(String senhaLogin) {
+        this.senhaLogin = senhaLogin;
+    }
+
+    /**
+     * @return the senhaConfirma
+     */
+    public String getSenhaConfirma() {
+        return senhaConfirma;
+    }
+
+    /**
+     * @param senhaConfirma the senhaConfirma to set
+     */
+    public void setSenhaConfirma(String senhaConfirma) {
+        this.senhaConfirma = senhaConfirma;
+    }
+
+    
 
 }

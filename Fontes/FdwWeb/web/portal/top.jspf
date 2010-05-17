@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : top
+    Created on : 15/05/2010, 19:14:51
+    Author     : pedro
+-->
+
+<div style="-rave-layout: grid; width: 600px; height: 90px" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"  xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+  <f:subview id="top">
+        <div id="header">
+		<img src="../resources/Portal/images/name.gif" alt="" width="171" height="37" />
+		<div class="small">
+                        <webuijsf:imageHyperlink  id="ihlHome" actionExpression="#{portal$top.ihlHome_action}" imageURL="../resources/Portal/images/small1.gif" alt="Home Page" width="13" height="13"/>
+                        <webuijsf:imageHyperlink  id="ihlMapa" actionExpression="#{portal$top.ihlMapa_action}" imageURL="../resources/Portal/images/small2.gif" alt="Mapa do Site" width="16" height="13" />
+                        <webuijsf:imageHyperlink  id="ihlContato" actionExpression="#{portal$top.ihlContato_action}" imageURL="../resources/Portal/images/small3.gif" alt="Contato" width="16" height="13" />
+                    <h:panelGrid columns="1" id="panelTop">                        
+                        <webuijsf:hyperlink id="hlkSair" actionExpression="#{portal$top.hlkSair_action}" text="#{SessionBean1.mensagemUsuario}" />
+                        <webuijsf:hyperlink id="hlkPedido" actionExpression="#{portal$top.ihlPedido_action}" text="#{portal$top.msgCarrinho}" />
+                    </h:panelGrid>
+		</div>
+                
+	</div>
+	<div class="menu">
+		<img src="../resources/Portal/images/lefttop.gif" alt="" width="165" height="56" />
+		<ul>
+			<li><webuijsf:imageHyperlink  id="ihlEstabelecimento" actionExpression="#{portal$top.ihlEstabelecimento_action}" imageURL="../resources/Portal/images/but1.gif" alt="Estabelecimentos" width="109" height="30" /></li>
+			<li><webuijsf:imageHyperlink  id="ihlCadastro" actionExpression="#{portal$top.ihlCadastro_action}" imageURL="../resources/Portal/images/but2.gif" alt="Cadastro" width="109" height="30" /></li>
+			<li><webuijsf:imageHyperlink  id="ihlPedido" actionExpression="#{portal$top.ihlPedido_action}" imageURL="../resources/Portal/images/but3.gif" alt="Pedidos" width="109" height="30" /></li>
+			<li><webuijsf:imageHyperlink  id="ihlSobre" actionExpression="#{portal$top.ihlSobre_action}" imageURL="../resources/Portal/images/but4.gif" alt="Sobre" width="108" height="30" /></li>
+		</ul>
+	</div>
+  </f:subview>
+</div>

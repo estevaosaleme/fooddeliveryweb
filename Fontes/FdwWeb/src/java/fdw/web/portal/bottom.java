@@ -3,13 +3,13 @@
  * and open the template in the editor.
  */
 
-package fdw.web.adm;
+package fdw.web.portal;
 
 import com.sun.rave.web.ui.appbase.AbstractFragmentBean;
 import javax.faces.FacesException;
-import fdw.web.RequestBean1;
-import fdw.web.ApplicationBean1;
 import fdw.web.SessionBean1;
+import fdw.web.ApplicationBean1;
+import fdw.web.RequestBean1;
 
 /**
  * <p>Fragment bean that corresponds to a similarly named JSP page
@@ -18,12 +18,12 @@ import fdw.web.SessionBean1;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version menu.java
- * @version Created on 18/03/2010, 21:15:56
+ * @version bottom.java
+ * @version Created on 15/05/2010, 19:15:09
  * @author pedro
  */
 
-public class menu extends AbstractFragmentBean {
+public class bottom extends AbstractFragmentBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -35,7 +35,7 @@ public class menu extends AbstractFragmentBean {
     }
     // </editor-fold>
 
-    public menu() {
+    public bottom() {
     }
 
     /**
@@ -88,8 +88,8 @@ public class menu extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
     /**
@@ -106,50 +106,25 @@ public class menu extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String hlManterCardapio_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterCardapio";
+    public String hlkAdministracao_action() {
+        return "acessoAdm";
     }
 
-    public String hlManterCep_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterCep";
-    }
-     public String hlManterCliente_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterCliente";
-    }
-      public String hlManterEstabelecimento_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterEstabelecimento";
-    }
-       public String hlManterFormaPagamento_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterFormaPagamento";
-    }
-        public String hlManterPrato_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterPrato";
-    }
-        public String hlManterPedido_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterPedido";
+    public String hlkHome_action() {
+        return "HomePortal";
     }
 
-        public String hlPortal_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "acessoPortal";
+    public String hlkSobre_action() {
+        return "indisponivel";
+    }
+    public String hlkParceiros_action() {
+        return "indisponivel";
+    }
+    public String hlkNoticias_action() {
+        return "indisponivel";
     }
 }

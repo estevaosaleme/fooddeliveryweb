@@ -4,14 +4,15 @@
  */
 package fdw.web;
 
+import br.com.fdw.negocio.fachada.ManterCliente;
 import br.com.fdw.negocio.fachada.ManterEstabelecimento;
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import com.sun.webui.jsf.model.Option;
 import com.sun.webui.jsf.model.OptionsList;
 import fdw.web.optionlist.estabelecimentoOptionsList;
+import fdw.web.portal.Carrinho;
 import javax.faces.FacesException;
 import fdw.web.provider.*;
-import java.util.List;
 
 /**
  * <p>Session scope data bean for your application.  Create properties
@@ -49,6 +50,9 @@ public class SessionBean1 extends AbstractSessionBean {
     private OptionsList SexoOptionsList;
     private OptionsList EstadoOptionsList;
     private byte[] ImagemTemp;
+    private int UsuarioLogado;
+    private String mensagemUsuario;
+    private Carrinho carrinhoCompras;
 
     /**
      * <p>Construct a new session data bean instance.</p>
@@ -103,6 +107,7 @@ public class SessionBean1 extends AbstractSessionBean {
         setSexoOptionsList(new OptionsList());
 
         CarregaListas();
+        setCarrinhoCompras(new Carrinho());
     }
 
     private void CarregaListas() {
@@ -311,4 +316,54 @@ public class SessionBean1 extends AbstractSessionBean {
     public void setImagemTemp(byte[] ImagemTemp) {
         this.ImagemTemp = ImagemTemp;
     }
+
+    /**
+     * @return the UsuarioLogado
+     */
+    public int getUsuarioLogado() {
+        return UsuarioLogado;
+    }
+
+    /**
+     * @param UsuarioLogado the UsuarioLogado to set
+     */
+    public void setUsuarioLogado(int UsuarioLogado) {
+        this.UsuarioLogado = UsuarioLogado;
+        if (this.getUsuarioLogado() > 0)
+        {
+            ManterCliente facade = new ManterCliente();
+            setMensagemUsuario("Olá "+facade.listarCliente(UsuarioLogado).getNomeCliente()+". Logout");
+        }
+        else
+            setMensagemUsuario("");
+    }
+
+    /**
+     * @return the mensagemUsuario
+     */
+    public String getMensagemUsuario() {
+        return mensagemUsuario;
+    }
+
+    /**
+     * @param mensagemUsuario the mensagemUsuario to set
+     */
+    public void setMensagemUsuario(String mensagemUsuario) {
+        this.mensagemUsuario = mensagemUsuario;
+    }
+
+    /**
+     * @return the carrinhoCompras
+     */
+    public Carrinho getCarrinhoCompras() {
+        return carrinhoCompras;
+    }
+
+    /**
+     * @param carrinhoCompras the carrinhoCompras to set
+     */
+    public void setCarrinhoCompras(Carrinho carrinhoCompras) {
+        this.carrinhoCompras = carrinhoCompras;
+    }
+
 }

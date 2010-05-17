@@ -15,6 +15,7 @@
                 <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterFormaPagamento_action}" id="hlManterFormaPagamento" text="Manter Forma Pagamento"/></li>
                 <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterPrato_action}" id="hlManterPrato" text="Manter Prato"/></li>
                 <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlManterPedido_action}" id="hlManterPedido" text="Manter Pedido"/></li>
+                <li><webuijsf:hyperlink actionExpression="#{adm$menu.hlPortal_action}" id="hlPortal" text="Portal"/></li>
             </ul>
         </div>
     </f:subview>

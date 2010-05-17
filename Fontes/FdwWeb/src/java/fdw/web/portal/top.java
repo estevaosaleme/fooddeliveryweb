@@ -2,14 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package fdw.web.adm;
+package fdw.web.portal;
 
 import com.sun.rave.web.ui.appbase.AbstractFragmentBean;
 import javax.faces.FacesException;
-import fdw.web.RequestBean1;
-import fdw.web.ApplicationBean1;
 import fdw.web.SessionBean1;
+import fdw.web.ApplicationBean1;
+import fdw.web.RequestBean1;
 
 /**
  * <p>Fragment bean that corresponds to a similarly named JSP page
@@ -18,12 +17,11 @@ import fdw.web.SessionBean1;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version menu.java
- * @version Created on 18/03/2010, 21:15:56
+ * @version top.java
+ * @version Created on 15/05/2010, 19:14:51
  * @author pedro
  */
-
-public class menu extends AbstractFragmentBean {
+public class top extends AbstractFragmentBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -35,7 +33,7 @@ public class menu extends AbstractFragmentBean {
     }
     // </editor-fold>
 
-    public menu() {
+    public top() {
     }
 
     /**
@@ -53,8 +51,8 @@ public class menu extends AbstractFragmentBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
-        
+
+
         // <editor-fold defaultstate="collapsed" desc="Visual-Web-managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -62,9 +60,9 @@ public class menu extends AbstractFragmentBean {
             _init();
         } catch (Exception e) {
             log("Page1 Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
+
         // </editor-fold>
         // Perform application initialization that must complete
         // *after* managed components are initialized
@@ -88,8 +86,8 @@ public class menu extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
     /**
@@ -106,50 +104,63 @@ public class menu extends AbstractFragmentBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String hlManterCardapio_action() {
+    public String ihlHome_action() {
         // TODO: Processe a ação. O valor de retorno é um nome de caso
         // de navegação em que nulo retornará à mesma página.
-        return "manterCardapio";
+        return "HomePortal";
     }
 
-    public String hlManterCep_action() {
+    public String ihlMapa_action() {
         // TODO: Processe a ação. O valor de retorno é um nome de caso
         // de navegação em que nulo retornará à mesma página.
-        return "manterCep";
-    }
-     public String hlManterCliente_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterCliente";
-    }
-      public String hlManterEstabelecimento_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterEstabelecimento";
-    }
-       public String hlManterFormaPagamento_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterFormaPagamento";
-    }
-        public String hlManterPrato_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterPrato";
-    }
-        public String hlManterPedido_action() {
-        // TODO: Processe a ação. O valor de retorno é um nome de caso
-        // de navegação em que nulo retornará à mesma página.
-        return "manterPedido";
+        return "Mapa";
     }
 
-        public String hlPortal_action() {
+    public String ihlContato_action() {
         // TODO: Processe a ação. O valor de retorno é um nome de caso
         // de navegação em que nulo retornará à mesma página.
-        return "acessoPortal";
+        return "Contato";
+    }
+
+    public String ihlEstabelecimento_action() {
+        // TODO: Processe a ação. O valor de retorno é um nome de caso
+        // de navegação em que nulo retornará à mesma página.
+        return "Estabelecimento";
+    }
+
+    public String ihlCadastro_action() {
+        // TODO: Processe a ação. O valor de retorno é um nome de caso
+        // de navegação em que nulo retornará à mesma página.
+        return "Cadastro";
+    }
+
+    public String ihlPedido_action() {
+        // TODO: Processe a ação. O valor de retorno é um nome de caso
+        // de navegação em que nulo retornará à mesma página.
+        return "Pedido";
+    }
+
+    public String ihlSobre_action() {
+        // TODO: Processe a ação. O valor de retorno é um nome de caso
+        // de navegação em que nulo retornará à mesma página.
+        return "Sobre";
+    }
+
+    public String hlkSair_action() {
+        getSessionBean1().setUsuarioLogado(0);
+        return "HomePortal";
+    }
+
+    public String getMsgCarrinho() {
+        Integer iProdutosCarrinho = new Integer(getSessionBean1().getCarrinhoCompras().QuantidadeItens());
+        if (iProdutosCarrinho == 1)
+            return iProdutosCarrinho.toString() + " item no carrinho";
+        else if (iProdutosCarrinho > 1)
+            return iProdutosCarrinho.toString() + " itens no carrinho";
+        return "";
     }
 }

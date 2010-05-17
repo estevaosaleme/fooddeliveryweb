@@ -3,10 +3,13 @@
  * and open the template in the editor.
  */
 
-package fdw.web;
+package fdw.web.portal;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
+import fdw.web.SessionBean1;
+import fdw.web.ApplicationBean1;
+import fdw.web.RequestBean1;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -15,12 +18,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version Page1.java
- * @version Created on 18/03/2010, 21:09:25
+ * @version HomePortal.java
+ * @version Created on 15/05/2010, 19:06:51
  * @author pedro
  */
 
-public class Page1 extends AbstractPageBean {
+public class HomePortal extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -36,7 +39,7 @@ public class Page1 extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Page1() {
+    public HomePortal() {
     }
 
     /**
@@ -65,7 +68,7 @@ public class Page1 extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Page1 Initialization Failure", e);
+            log("HomePortal Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -109,7 +112,7 @@ public class Page1 extends AbstractPageBean {
     @Override
     public void destroy() {
     }
-    
+
     /**
      * <p>Return a reference to the scoped data bean.</p>
      *
@@ -124,8 +127,8 @@ public class Page1 extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
     /**
@@ -133,13 +136,9 @@ public class Page1 extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
-
-    public String btnAdministracao_action() {
-        return "acessoAdm";
-    }
-
+    
 }
 

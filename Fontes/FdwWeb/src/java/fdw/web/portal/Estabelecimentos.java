@@ -3,19 +3,20 @@
  * and open the template in the editor.
  */
 
-package fdw.web.adm;
+package fdw.web.portal;
 
 import br.com.fdw.negocio.entidades.Cardapio;
+import br.com.fdw.negocio.entidades.Estabelecimento;
 import br.com.fdw.negocio.entidades.Prato;
 import br.com.fdw.negocio.fachada.ManterCardapio;
+import br.com.fdw.negocio.fachada.ManterEstabelecimento;
 import br.com.fdw.negocio.fachada.ManterPrato;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
-import fdw.web.SessionBean1;
-import fdw.web.RequestBean1;
 import fdw.web.ApplicationBean1;
+import fdw.web.RequestBean1;
+import fdw.web.SessionBean1;
 import java.util.List;
-import javax.faces.event.ValueChangeEvent;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -24,12 +25,12 @@ import javax.faces.event.ValueChangeEvent;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version manterPrato.java
- * @version Created on 21/03/2010, 15:02:17
+ * @version Estabelecimentos.java
+ * @version Created on 16/05/2010, 13:56:14
  * @author pedro
  */
 
-public class manterPrato extends AbstractPageBean {
+public class Estabelecimentos extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -45,7 +46,7 @@ public class manterPrato extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public manterPrato() {
+    public Estabelecimentos() {
     }
 
     /**
@@ -74,7 +75,7 @@ public class manterPrato extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("manterPrato Initialization Failure", e);
+            log("Estabelecimentos Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -83,7 +84,6 @@ public class manterPrato extends AbstractPageBean {
         // *after* managed components are initialized
         // TODO - add your own initialization code here
         atualizaLista();
-        getRequestBean1().setCardapioTemporario("");
     }
 
     /**
@@ -126,15 +126,6 @@ public class manterPrato extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
@@ -147,31 +138,49 @@ public class manterPrato extends AbstractPageBean {
     protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
-    
-	private void limparCamposFormulario() {
-        getRequestBean1().setPrato(new Prato());
-        getRequestBean1().setCardapioTemporario("");
-        getSessionBean1().setImagemTemp(null);
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
     private String atualizaLista(){
         try {
-            ManterPrato facade = new ManterPrato();
-            List pratos = facade.listarPratos();
-            getSessionBean1().getPratoProvider().setList(pratos);
+            if (getSessionBean1().getEstabelecimentoProvider().getList() == null  || getSessionBean1().getEstabelecimentoProvider().getList().size() <= 0 || ((Estabelecimento)getSessionBean1().getEstabelecimentoProvider().getList().get(0)).getCodigoEstabelecimento() == null)
+            {
+                getSessionBean1().getEstabelecimentoProvider().getList().clear();
+                getSessionBean1().getCardapioProvider().getList().clear();
+                getSessionBean1().getPratoProvider().getList().clear();
+                ManterEstabelecimento facade = new ManterEstabelecimento();
+                List estabelecimentos = facade.listarEstabelecimentos();
+                getSessionBean1().getEstabelecimentoProvider().setList(estabelecimentos);
+            }
         } catch (Exception e) {
             error(e.getMessage());
         }
             return null;
     }
-    public String hlkPrato_action() {
-        try {
-            int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
-            ManterPrato manterprato = new ManterPrato();
-            Prato prato = manterprato.consultarPrato(selecionado);
-            getRequestBean1().setCardapioTemporario(prato.getCardapio().getCodigoCardapio().toString());
-            getRequestBean1().setPrato(prato);
-            getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
+
+    public String hlkEstabelecimento_action() {
+         try {
+             getSessionBean1().getCardapioProvider().getList().clear();
+             getSessionBean1().getPratoProvider().getList().clear();
+            int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoEstabelecimento']}").toString());
+            ManterCardapio facadeCardapio = new ManterCardapio();
+            List<Cardapio> lstCardapio = facadeCardapio.listarByCodigoEstabelecimento(selecionado);
+
+            if (lstCardapio.size() > 0)
+            {
+                getSessionBean1().getCardapioProvider().setList(lstCardapio);
+                if (lstCardapio.size() == 1)
+                {
+                    listaPratos(((Cardapio)lstCardapio.get(0)).getCodigoCardapio());
+                }
+            }
         }
         catch (Exception e) {
                 error(e.getMessage());
@@ -179,97 +188,31 @@ public class manterPrato extends AbstractPageBean {
        return null;
     }
 
-    public String btnLimpar_action() {
-        limparCamposFormulario();
+     public String hlkPrato_action(){
+         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
+         ManterPrato facadeprato = new ManterPrato();
+         Prato prato = facadeprato.consultarPrato(selecionado);
+         if (prato != null)
+         {
+             Carrinho carr = getSessionBean1().getCarrinhoCompras();
+             String strRetorno = carr.Inclui(prato);
+             info(strRetorno);
+         }
         return null;
-    }
+     }
 
-    public String btnSalvarNovo_action() {
-        try {
-            Prato prato = getRequestBean1().getPrato();
-            ManterPrato facade = new ManterPrato();
-            prato.setFoto(getFoto());
-            if (facade.incluirPrato(prato)!=null)
-            {
-                info("Registro inserido com sucesso!");
-            }
-            else
-            {
-                info("Falha ao salvar !");
-            }
-            limparCamposFormulario();
-            return atualizaLista();
-        } catch (Exception e) {
-            error(e.getMessage());
-        }
+     public String hlkCardapio_action(){
+         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoCardapio']}").toString());
+         listaPratos(selecionado);
          return null;
+     }
+
+    private void listaPratos(int codigoCardapio) {
+        getSessionBean1().getPratoProvider().getList().clear();
+        ManterPrato facadePrato = new ManterPrato();
+        List<Prato> lstPrato = facadePrato.listarByCodigoCardapio(codigoCardapio);
+        if (lstPrato.size() > 0)
+            getSessionBean1().getPratoProvider().setList(lstPrato);
     }
-
-    public String btnAtualizar_action() {
-        try {
-            Prato prato = getRequestBean1().getPrato();
-            ManterPrato facade = new ManterPrato();
-            prato.setFoto(getFoto());
-            facade.atualizarPrato(prato);
-            info("Registro atualizado com sucesso!");
-            limparCamposFormulario();
-            return atualizaLista();
-        } catch (Exception e) {
-            error(e.getMessage());
-        }
-        return null;
-    }
-
-    public String btnExcluir_action() {
-        try {
-            Prato prato = getRequestBean1().getPrato();
-            ManterPrato facade = new ManterPrato();
-            facade.excluirPrato(prato.getCodigoPrato());
-            info("Registro excluído com sucesso!");
-            limparCamposFormulario();
-            return atualizaLista();
-        } catch (Exception e) {
-            error(e.getMessage());
-        }
-        return null;
-    }
-
-   public byte[] getFoto() {
-       
-       if(getRequestBean1().getUploadedFile() != null && getRequestBean1().getUploadedFile().getBytes().length != 0 )
-       {
-           byte[] foto = getRequestBean1().getUploadedFile().getBytes();
-           if (!getRequestBean1().getUploadedFile().getOriginalName().toUpperCase().contains("JPG"))
-           {
-               info("Apenas imagens JPG são aceitas.");
-               return null;
-           }
-           return foto;
-       }
-       return null;
-    }
-
-
-   public void txtcardapio_processValueChange(ValueChangeEvent event) {
-        String codCard = (String) event.getNewValue();
-        getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
-        if (!codCard.equals(""))
-        {
-            int card = Integer.parseInt(codCard);
-            ManterCardapio facade = new ManterCardapio();
-            Cardapio objCard = facade.listarCardapio(card);
-            try {
-                if (objCard == null || objCard.getCodigoCardapio() == null)
-                    info("Cardápio inválido, não exite cadastrado");
-                else
-                    getRequestBean1().getPrato().setCardapio(objCard);
-            }
-            catch (Exception e)
-            {
-                info("Falha ao recuperar cardápio");
-            }
-        }
-        getSessionBean1().setImagemTemp(getRequestBean1().getPrato().getFoto());
-   }
 }
 
