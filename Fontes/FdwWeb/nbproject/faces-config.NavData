@@ -6,18 +6,20 @@
         <Node id="Page1.jsp" x="77" y="51" zoom="true"/>
     </Scope>
     <Scope Scope="Project">
-        <Node id="adm/HomeAdm.jsp" x="89" y="250" zoom="true"/>
         <Node id="adm/manterCep.jsp" x="291" y="418" zoom="true"/>
+        <Node id="adm/HomeAdm.jsp" x="89" y="250" zoom="true"/>
         <Node id="adm/manterFormasPagamento.jsp" x="582" y="457" zoom="true"/>
         <Node id="portal/Cadastro.jsp" x="150" y="300" zoom="true"/>
+        <Node id="portal/DetalhePrato.jsp" x="150" y="450" zoom="true"/>
         <Node id="portal/HomePortal.jsp" x="-153" y="249" zoom="false"/>
         <Node id="*" x="650" y="150" zoom="true"/>
         <Node id="adm/*" x="360" y="192" zoom="false"/>
+        <Node id="portal/Estabelecimentos.jsp" x="150" y="150" zoom="true"/>
         <Node id="adm/manterEstabelecimento.jsp" x="284" y="32" zoom="true"/>
         <Node id="adm/manterCliente.jsp" x="604" y="166" zoom="true"/>
-        <Node id="portal/Estabelecimentos.jsp" x="150" y="150" zoom="true"/>
         <Node id="portal/Pedido.jsp" x="400" y="300" zoom="true"/>
         <Node id="portal/*" x="650" y="150" zoom="true"/>
+        <Node id="index.html" x="900" y="150" zoom="true"/>
         <Node id="adm/manterCardapio.jsp" x="606" y="37" zoom="true"/>
         <Node id="adm/manterPedido.jsp" x="24" y="468" zoom="true"/>
         <Node id="adm/manterPrato.jsp" x="605" y="294" zoom="true"/>

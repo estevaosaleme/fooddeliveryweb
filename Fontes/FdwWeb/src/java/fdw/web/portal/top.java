@@ -129,7 +129,7 @@ public class top extends AbstractFragmentBean {
     public String ihlEstabelecimento_action() {
         // TODO: Processe a ação. O valor de retorno é um nome de caso
         // de navegação em que nulo retornará à mesma página.
-        return "Estabelecimento";
+        return "Produtos";
     }
 
     public String ihlCadastro_action() {
@@ -156,11 +156,14 @@ public class top extends AbstractFragmentBean {
     }
 
     public String getMsgCarrinho() {
-        Integer iProdutosCarrinho = new Integer(getSessionBean1().getCarrinhoCompras().QuantidadeItens());
-        if (iProdutosCarrinho == 1)
-            return iProdutosCarrinho.toString() + " item no carrinho";
-        else if (iProdutosCarrinho > 1)
-            return iProdutosCarrinho.toString() + " itens no carrinho";
+        if (getSessionBean1().getCarrinhoCompras() != null)
+        {
+            Integer iProdutosCarrinho = new Integer(getSessionBean1().getCarrinhoCompras().QuantidadeItens());
+                if (iProdutosCarrinho == 1)
+                    return iProdutosCarrinho.toString() + " item no carrinho";
+            else if (iProdutosCarrinho > 1)
+                return iProdutosCarrinho.toString() + " itens no carrinho";
+        }
         return "";
     }
 }

@@ -40,7 +40,7 @@ public class Carrinho {
         setIdEstabelecimento(0);
     }
 
-    public String Inclui(Prato prato)
+    public String Inclui(Prato prato, int quantidade)
     {
         if (produtos.containsKey(prato.getCodigoPrato()))
             return "Produto já está no carrinho";
@@ -49,7 +49,7 @@ public class Carrinho {
        if (getIdEstabelecimento() != 0 && this.getIdEstabelecimento() != idEstabelecimentoPrato)
             return "Carrinho só pode conter produtos de um estabelecimento";
 
-        produtos.put(prato.getCodigoPrato(), new pratoQuantidade(prato, 1));
+        produtos.put(prato.getCodigoPrato(), new pratoQuantidade(prato, quantidade));
         setIdEstabelecimento(idEstabelecimentoPrato);
         this.AjustaProvider();
         return "Produto incluido no carrinho";
@@ -91,6 +91,14 @@ public class Carrinho {
 
     public int QuantidadeItens(){
         return produtos.size();
+    }
+
+    public String getTotal(){
+        Double tot = 0D;
+        for (Object objPratoQuant : this.produtosProvider.getList()) {
+            tot += ( ((pratoQuantidade)objPratoQuant).getPrato().getValorUnitario() * ((pratoQuantidade)objPratoQuant).getQuantidade());
+        }
+        return tot.toString();
     }
     /**
      * @return the idEstabelecimento

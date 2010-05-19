@@ -5,11 +5,15 @@
 
 package fdw.web.portal;
 
+import br.com.fdw.negocio.entidades.Prato;
+import br.com.fdw.negocio.fachada.ManterPrato;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
 import fdw.web.SessionBean1;
 import fdw.web.ApplicationBean1;
 import fdw.web.RequestBean1;
+import java.util.List;
+import java.util.Random;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -36,6 +40,7 @@ public class HomePortal extends AbstractPageBean {
 
     // </editor-fold>
 
+    
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -76,6 +81,7 @@ public class HomePortal extends AbstractPageBean {
         // Perform application initialization that must complete
         // *after* managed components are initialized
         // TODO - add your own initialization code here
+
     }
 
     /**
@@ -139,6 +145,35 @@ public class HomePortal extends AbstractPageBean {
     protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
-    
+
+    public String imgPrato1_action(){        
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato1().getCodigoPrato());
+        return "DetalhePrato";
+     }
+
+    public String imgPrato2_action(){
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato2().getCodigoPrato());
+        return "DetalhePrato";
+     }
+
+    public String imgPrato3_action(){
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato3().getCodigoPrato());
+        return "DetalhePrato";
+     }
+
+    public String imgPrato4_action(){
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato4().getCodigoPrato());
+        return "DetalhePrato";
+     }
+
+    public String imgPrato5_action(){
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato5().getCodigoPrato());
+        return "DetalhePrato";
+     }
+
+    public String imgPrato6_action(){        
+        getSessionBean1().setDetalhePrato(getSessionBean1().getPrato6().getCodigoPrato());
+        return "DetalhePrato";
+     }
 }
 

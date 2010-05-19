@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
     Document   : Estabelecimentos
     Created on : 16/05/2010, 13:56:14
     Author     : pedro
@@ -21,7 +21,7 @@
                                     <webuijsf:tableRowGroup emptyDataMsg="Não há estabelecimentos cadastrados" id="tableRowGroup1" rows="10"
                                         sourceData="#{SessionBean1.estabelecimentoProvider}" sourceVar="currentRow">
                                         <webuijsf:tableColumn headerText="Estabelecimento" id="ColEstabelecimento" width="100">
-                                            <webuijsf:hyperlink actionExpression="#{portal$Estabelecimentos.hlkEstabelecimento_action}" id="hlkEstabelecimento" text="#{currentRow.value['nomeFantasia']}"/>
+                                            <webuijsf:hyperlink actionExpression="#{portal$Produtos.hlkEstabelecimento_action}" id="hlkEstabelecimento" text="#{currentRow.value['nomeFantasia']}"/>
                                         </webuijsf:tableColumn>
                                         <webuijsf:tableColumn headerText="Slogan" id="tableColumn4" width="250">
                                             <webuijsf:staticText id="staticText2" text="#{currentRow.value['slogan']}"/>
@@ -32,7 +32,7 @@
                                     <webuijsf:tableRowGroup emptyDataMsg="Não há cardapios cadastrados deste estabelecimento" id="tableRowGroup1" rows="5"
                                         sourceData="#{SessionBean1.cardapioProvider}" sourceVar="currentRow">
                                         <webuijsf:tableColumn headerText="Cardapio" id="ColCardapio">
-                                            <webuijsf:hyperlink actionExpression="#{portal$Estabelecimentos.hlkCardapio_action}" id="hlkCardapio" text="#{currentRow.value['nomeCardapio']}"/>
+                                            <webuijsf:hyperlink actionExpression="#{portal$Produtos.hlkCardapio_action}" id="hlkCardapio" text="#{currentRow.value['nomeCardapio']}"/>
                                         </webuijsf:tableColumn>
                                     </webuijsf:tableRowGroup>
                                 </webuijsf:table>
@@ -44,8 +44,9 @@
                                         sourceData="#{SessionBean1.pratoProvider}" sourceVar="currentRow">
                                         <webuijsf:tableColumn headerText="Prato" id="ColPrato" sort="Prato" width="100">
                                             <h:panelGrid columns="1" id="panelPratoImg" style="align:center;">
-                                                <webuijsf:imageHyperlink id="imgPrato" width="120" height="80" imageURL="/ImagemPrato?id=#{currentRow.value['codigoPrato']}" actionExpression="#{portal$Estabelecimentos.hlkPrato_action}"/>
-                                                <webuijsf:hyperlink actionExpression="#{portal$Estabelecimentos.hlkPrato_action}" id="hlkPrato" text="Comprar"/>
+                                                <webuijsf:imageHyperlink actionExpression="#{portal$Produtos.hlkPrato_action}" height="80" id="imgPrato"
+                                                    imageURL="/ImagemPrato?id=#{currentRow.value['codigoPrato']}" width="120"/>
+                                                <webuijsf:hyperlink actionExpression="#{portal$Produtos.hlkPrato_action}" id="hlkPrato" text="Detalhe"/>
                                             </h:panelGrid>
                                         </webuijsf:tableColumn>
                                         <webuijsf:tableColumn headerText="Descrição" id="ColDesc" width="430">

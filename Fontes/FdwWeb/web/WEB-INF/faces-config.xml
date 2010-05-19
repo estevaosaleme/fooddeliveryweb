@@ -148,8 +148,8 @@
             <to-view-id>/portal/Indisponivel.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>Estabelecimento</from-outcome>
-            <to-view-id>/portal/Estabelecimentos.jsp</to-view-id>
+            <from-outcome>Produtos</from-outcome>
+            <to-view-id>/portal/Produtos.jsp</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>Cadastro</from-outcome>
@@ -167,6 +167,10 @@
             <from-outcome>indisponivel</from-outcome>
             <to-view-id>/portal/Indisponivel.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>DetalhePrato</from-outcome>
+            <to-view-id>/portal/DetalhePrato.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>portal$Indisponivel</managed-bean-name>
@@ -179,8 +183,8 @@
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>portal$Estabelecimentos</managed-bean-name>
-        <managed-bean-class>fdw.web.portal.Estabelecimentos</managed-bean-class>
+        <managed-bean-name>portal$Produtos</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.Produtos</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <managed-bean>
@@ -188,7 +192,14 @@
         <managed-bean-class>fdw.web.portal.Pedido</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>portal$DetalhePrato</managed-bean-name>
+        <managed-bean-class>fdw.web.portal.DetalhePrato</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
+
+
 
 
 

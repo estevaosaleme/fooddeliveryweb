@@ -23,32 +23,41 @@
                                                             sourceData="#{SessionBean1.carrinhoCompras.produtosProvider}" sourceVar="currentRow">
                                         <webuijsf:tableColumn headerText="Prato" id="ColPrato" width="300">
                                             <h:panelGrid columns="1" id="panelPratoImg" style="align:center;">
-                                                <webuijsf:image id="imgPrato" width="120" height="80" url="/ImagemPrato?id=#{currentRow.value['codigoPrato']}"/>
-                                                <webuijsf:staticText id="hlkPrato" text="#{currentRow.value['nomePrato']}"/>
+                                                <webuijsf:imageHyperlink id="imgPrato" width="120" height="80" imageURL="/ImagemPrato?id=#{currentRow.value['codigoPrato']}" actionExpression="#{portal$Pedido.hlkPrato_action}"/>
+                                                <webuijsf:hyperlink id="hlkPrato" text="#{currentRow.value['nomePrato']}" actionExpression="#{portal$Pedido.hlkPrato_action}"/>
                                             </h:panelGrid>
                                         </webuijsf:tableColumn>
                                         <webuijsf:tableColumn headerText="Quantidade" id="ColQuant" width="100">
-                                            <h:panelGrid columns="2" id="panelPratoQuant">
-                                                <webuijsf:textField id="txtQuantidade" text="#{currentRow.value['quantidade']}"/>
-                                                <webuijsf:hyperlink actionExpression="#{portal$Pedido.hlkAltQuant_action}" id="hlkAltQuant" text="Alterar"/>
-                                            </h:panelGrid>
-                                        </webuijsf:tableColumn>
-                                        <webuijsf:tableColumn headerText="" id="ColOp" width="100">
-                                            <h:panelGrid columns="1" id="panelPratoOp">
-                                                 <webuijsf:hyperlink actionExpression="#{portal$Pedido.hlkRemover_action}" id="hlkRemover" text="Remover"/>
+                                            <h:panelGrid columns="1" id="pnAcoes">
+                                                <h:panelGrid columns="3" id="panelPratoQuant">
+                                                    <webuijsf:staticText id="txtQuantidade" text="#{currentRow.value['quantidade']}"/>
+                                                    <webuijsf:button actionExpression="#{portal$Pedido.hlkAltQuantMais_action}" id="hlkAltQuantMais" text="+"/>
+                                                    <webuijsf:button actionExpression="#{portal$Pedido.hlkAltQuantMenos_action}" id="hlkAltQuantMenos" text="-"/>
+                                                </h:panelGrid>
+                                                <webuijsf:hyperlink actionExpression="#{portal$Pedido.hlkRemover_action}" id="hlkRemover" text="Remover"/>
                                             </h:panelGrid>
                                         </webuijsf:tableColumn>
                                     </webuijsf:tableRowGroup>
                                 </webuijsf:table>
                             </h:panelGrid>
-                            <h:panelGrid columns="2" id="panelFim" width="550">
-                              <h:panelGrid columns="2" id="panelCampos">
-                                <webuijsf:label for="cmbFormaPagamento" id="lblFormaPagamento" text="Forma Pagamento"/>
-                                <webuijsf:dropDown id="cmbFormaPagamento" items="#{SessionBean1.carrinhoCompras.formaPagamentoOptionsList.options}"
-                                                   selected="#{SessionBean1.carrinhoCompras.formaPagamentoOptionsList.selectedValue}"/>
-                              </h:panelGrid>
-                              <webuijsf:button actionExpression="#{portal$Pedido.btnFinaliza_action}" id="btnFinaliza" text="Finalizar Pedido"/>
-                            </h:panelGrid>
+                            <img src="../resources/Portal/images/middle.jpg" alt="" width="620" height="4" class="pad" />
+                            <div class="bot">
+                                <h:panelGrid columns="1">
+                                    <h:panelGrid columns="2" id="panelFim" width="550">
+                                        <h:panelGrid columns="2" id="panelCampos">
+                                            <webuijsf:label for="panelTotalValor" id="lblTotal" text="Total:"/>
+                                            <h:panelGrid columns="2" id="panelTotalValor">
+                                                <webuijsf:label for="sttTotal" id="lblRS" text="R$ "/>
+                                                <webuijsf:staticText id="sttTotal" text="#{SessionBean1.carrinhoCompras.total}"  style="font-size: 18px; font-weight: bold"  />
+                                            </h:panelGrid>
+                                            <webuijsf:label for="cmbFormaPagamento" id="lblFormaPagamento" text="Forma Pagamento"/>
+                                            <webuijsf:dropDown id="cmbFormaPagamento" items="#{SessionBean1.carrinhoCompras.formaPagamentoOptionsList.options}"
+                                                           selected="#{SessionBean1.carrinhoCompras.formaPagamentoOptionsList.selectedValue}"/>
+                                        </h:panelGrid>
+                                      <webuijsf:button actionExpression="#{portal$Pedido.btnFinaliza_action}" id="btnFinaliza" text="Finalizar Pedido"/>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </div>
                         </div>
                         <jsp:directive.include file="bottom.jspf"/>
                     </webuijsf:form>

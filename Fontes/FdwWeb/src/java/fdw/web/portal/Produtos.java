@@ -5,9 +5,18 @@
 
 package fdw.web.portal;
 
-import fdw.web.*;
+import br.com.fdw.negocio.entidades.Cardapio;
+import br.com.fdw.negocio.entidades.Estabelecimento;
+import br.com.fdw.negocio.entidades.Prato;
+import br.com.fdw.negocio.fachada.ManterCardapio;
+import br.com.fdw.negocio.fachada.ManterEstabelecimento;
+import br.com.fdw.negocio.fachada.ManterPrato;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
+import fdw.web.ApplicationBean1;
+import fdw.web.RequestBean1;
+import fdw.web.SessionBean1;
+import java.util.List;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -16,12 +25,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version Pedido.java
- * @version Created on 16/05/2010, 18:40:43
+ * @version Estabelecimentos.java
+ * @version Created on 16/05/2010, 13:56:14
  * @author pedro
  */
 
-public class Pedido extends AbstractPageBean {
+public class Produtos extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -37,7 +46,7 @@ public class Pedido extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Pedido() {
+    public Produtos() {
     }
 
     /**
@@ -46,7 +55,7 @@ public class Pedido extends AbstractPageBean {
      * Customize this method to acquire resources that will be needed
      * for event handlers and lifecycle methods, whether or not this
      * page is performing post back processing.</p>
-     *
+     * 
      * <p>Note that, if the current request is a postback, the property
      * values of the components do <strong>not</strong> represent any
      * values submitted with this request.  Instead, they represent the
@@ -59,21 +68,22 @@ public class Pedido extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-
+        
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
         try {
             _init();
         } catch (Exception e) {
-            log("Pedido Initialization Failure", e);
+            log("Estabelecimentos Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
-
+        
         // </editor-fold>
         // Perform application initialization that must complete
         // *after* managed components are initialized
         // TODO - add your own initialization code here
+        atualizaLista();
     }
 
     /**
@@ -138,43 +148,61 @@ public class Pedido extends AbstractPageBean {
         return (SessionBean1) getBean("SessionBean1");
     }
 
-     public String hlkRemover_action(){
-         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
-         getSessionBean1().getCarrinhoCompras().Exclui(selecionado);
-         return null;
-     }
+    private String atualizaLista(){
+        try {
+            if (getSessionBean1().getEstabelecimentoProvider().getList() == null  || getSessionBean1().getEstabelecimentoProvider().getList().size() <= 0 || ((Estabelecimento)getSessionBean1().getEstabelecimentoProvider().getList().get(0)).getCodigoEstabelecimento() == null)
+            {
+                getSessionBean1().getEstabelecimentoProvider().getList().clear();
+                getSessionBean1().getCardapioProvider().getList().clear();
+                getSessionBean1().getPratoProvider().getList().clear();
+                ManterEstabelecimento facade = new ManterEstabelecimento();
+                List estabelecimentos = facade.listarEstabelecimentos();
+                getSessionBean1().getEstabelecimentoProvider().setList(estabelecimentos);
+            }
+        } catch (Exception e) {
+            error(e.getMessage());
+        }
+            return null;
+    }
 
-     public String hlkAltQuantMais_action(){
-         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
-         int quantAnterior = Integer.parseInt(getValue("#{currentRow.value['quantidade']}").toString());
-         getSessionBean1().getCarrinhoCompras().AlteraQuantidade(selecionado, quantAnterior+1);
-         return null;
-     }
+    public String hlkEstabelecimento_action() {
+         try {
+             getSessionBean1().getCardapioProvider().getList().clear();
+             getSessionBean1().getPratoProvider().getList().clear();
+            int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoEstabelecimento']}").toString());
+            ManterCardapio facadeCardapio = new ManterCardapio();
+            List<Cardapio> lstCardapio = facadeCardapio.listarByCodigoEstabelecimento(selecionado);
 
-      public String hlkAltQuantMenos_action(){
-         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
-         int quantAnterior = Integer.parseInt(getValue("#{currentRow.value['quantidade']}").toString());
-         if (quantAnterior-1 <=0 )
-             getSessionBean1().getCarrinhoCompras().Exclui(selecionado);
-         else
-             getSessionBean1().getCarrinhoCompras().AlteraQuantidade(selecionado, quantAnterior-1);
-         return null;
-     }
+            if (lstCardapio.size() > 0)
+            {
+                getSessionBean1().getCardapioProvider().setList(lstCardapio);
+                listaPratos(((Cardapio)lstCardapio.get(0)).getCodigoCardapio());
+            }
+        }
+        catch (Exception e) {
+                error(e.getMessage());
+        }
+       return null;
+    }
 
-      public String hlkPrato_action(){
+     public String hlkPrato_action(){
         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoPrato']}").toString());
         getSessionBean1().setDetalhePrato(selecionado);
         return "DetalhePrato";
      }
-      
-      public String btnFinaliza_action(){
-          //
-          //  Falta salvar o pedido
-          //
-          //
-        if (getSessionBean1().getUsuarioLogado() <=0 )
-            return "Cadastro";
-        getSessionBean1().getCarrinhoCompras().limpa();
-        return "HomePortal";
-      }
+
+     public String hlkCardapio_action(){
+         int selecionado = Integer.parseInt(getValue("#{currentRow.value['codigoCardapio']}").toString());
+         listaPratos(selecionado);
+         return null;
+     }
+
+    private void listaPratos(int codigoCardapio) {
+        getSessionBean1().getPratoProvider().getList().clear();
+        ManterPrato facadePrato = new ManterPrato();
+        List<Prato> lstPrato = facadePrato.listarByCodigoCardapio(codigoCardapio);
+        if (lstPrato.size() > 0)
+            getSessionBean1().getPratoProvider().setList(lstPrato);
+    }
 }
+

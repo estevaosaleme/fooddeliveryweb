@@ -4,8 +4,11 @@
  */
 package fdw.web;
 
+import br.com.fdw.negocio.entidades.Prato;
+import br.com.fdw.negocio.entidades.Prato;
 import br.com.fdw.negocio.fachada.ManterCliente;
 import br.com.fdw.negocio.fachada.ManterEstabelecimento;
+import br.com.fdw.negocio.fachada.ManterPrato;
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import com.sun.webui.jsf.model.Option;
 import com.sun.webui.jsf.model.OptionsList;
@@ -13,6 +16,8 @@ import fdw.web.optionlist.estabelecimentoOptionsList;
 import fdw.web.portal.Carrinho;
 import javax.faces.FacesException;
 import fdw.web.provider.*;
+import java.util.List;
+import java.util.Random;
 
 /**
  * <p>Session scope data bean for your application.  Create properties
@@ -53,6 +58,14 @@ public class SessionBean1 extends AbstractSessionBean {
     private int UsuarioLogado;
     private String mensagemUsuario;
     private Carrinho carrinhoCompras;
+    private int detalhePrato;
+
+    private Prato prato1;
+    private Prato prato2;
+    private Prato prato3;
+    private Prato prato4;
+    private Prato prato5;
+    private Prato prato6;
 
     /**
      * <p>Construct a new session data bean instance.</p>
@@ -108,6 +121,39 @@ public class SessionBean1 extends AbstractSessionBean {
 
         CarregaListas();
         setCarrinhoCompras(new Carrinho());
+
+        setaPratosHome();
+    }
+
+    private void setaPratosHome() {
+        ManterPrato facade = new ManterPrato();
+        List<Prato> lstPrato = facade.listarPratos();
+        if (lstPrato.size() <= 0)
+        {
+            Prato fake = new Prato();
+            fake.setCodigoPrato(0);
+            fake.setNomePrato("Nenhum prato cadastrado");
+            fake.setValorUnitario(0);
+            setPrato1(fake);
+            setPrato2(fake);
+            setPrato3(fake);
+            setPrato4(fake);
+            setPrato5(fake);
+            setPrato6(fake);
+        }
+        Random rd = new Random();
+        int item1 = rd.nextInt(lstPrato.size());
+        setPrato1(lstPrato.get(item1));
+        int item2 = rd.nextInt(lstPrato.size());
+        setPrato2(lstPrato.get(item2));
+        int item3 = rd.nextInt(lstPrato.size());
+        setPrato3(lstPrato.get(item3));
+        int item4 = rd.nextInt(lstPrato.size());
+        setPrato4(lstPrato.get(item4));
+        int item5 = rd.nextInt(lstPrato.size());
+        setPrato5(lstPrato.get(item5));
+        int item6 = rd.nextInt(lstPrato.size());
+        setPrato6(lstPrato.get(item6));
     }
 
     private void CarregaListas() {
@@ -364,6 +410,104 @@ public class SessionBean1 extends AbstractSessionBean {
      */
     public void setCarrinhoCompras(Carrinho carrinhoCompras) {
         this.carrinhoCompras = carrinhoCompras;
+    }
+
+    /**
+     * @return the detalhePrato
+     */
+    public int getDetalhePrato() {
+        return detalhePrato;
+    }
+
+    /**
+     * @param detalhePrato the detalhePrato to set
+     */
+    public void setDetalhePrato(int detalhePrato) {
+        this.detalhePrato = detalhePrato;
+    }
+
+    /**
+     * @return the prato1
+     */
+    public Prato getPrato1() {
+        return prato1;
+    }
+
+    /**
+     * @param prato1 the prato1 to set
+     */
+    public void setPrato1(Prato prato1) {
+        this.prato1 = prato1;
+    }
+
+    /**
+     * @return the prato2
+     */
+    public Prato getPrato2() {
+        return prato2;
+    }
+
+    /**
+     * @param prato2 the prato2 to set
+     */
+    public void setPrato2(Prato prato2) {
+        this.prato2 = prato2;
+    }
+
+    /**
+     * @return the prato3
+     */
+    public Prato getPrato3() {
+        return prato3;
+    }
+
+    /**
+     * @param prato3 the prato3 to set
+     */
+    public void setPrato3(Prato prato3) {
+        this.prato3 = prato3;
+    }
+
+    /**
+     * @return the prato4
+     */
+    public Prato getPrato4() {
+        return prato4;
+    }
+
+    /**
+     * @param prato4 the prato4 to set
+     */
+    public void setPrato4(Prato prato4) {
+        this.prato4 = prato4;
+    }
+
+    /**
+     * @return the prato5
+     */
+    public Prato getPrato5() {
+        return prato5;
+    }
+
+    /**
+     * @param prato5 the prato5 to set
+     */
+    public void setPrato5(Prato prato5) {
+        this.prato5 = prato5;
+    }
+
+    /**
+     * @return the prato6
+     */
+    public Prato getPrato6() {
+        return prato6;
+    }
+
+    /**
+     * @param prato6 the prato6 to set
+     */
+    public void setPrato6(Prato prato6) {
+        this.prato6 = prato6;
     }
 
 }
