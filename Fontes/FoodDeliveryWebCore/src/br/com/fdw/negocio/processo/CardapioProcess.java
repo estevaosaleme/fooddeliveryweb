@@ -61,4 +61,8 @@ public class CardapioProcess {
            throw new RuntimeException("O Cardápio não pode ser excluido pois existem pratos cadastrados.");
        }
     }
+
+    public List<Cardapio> listarByCodigoEstabelecimento(int codigoEstabelecimento) {
+        return this.dao.listarByCodigoEstabelecimento(codigoEstabelecimento);
+    }
 }

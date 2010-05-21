@@ -30,4 +30,15 @@ public class CardapioDAO extends GenericDAO<Cardapio> {
             return null;
         }
     }
+
+    public List<Cardapio> listarByCodigoEstabelecimento(int codigoEstabelecimento) {
+        String namedQuery = "Cardapio.listByCodigoEstabelecimento";
+        Query query = ConnFactory.getEntityManager().createNamedQuery(namedQuery);
+        query.setParameter("codigoEstabelecimento", codigoEstabelecimento);
+        try {
+            return (List<Cardapio>)query.getResultList();
+        } catch (NoResultException noResultException) {
+            return null;
+        }
+    }
 }

@@ -55,7 +55,9 @@ public class ClienteProcess {
         return this.dao.remove(codigoCliente);
     }
 
-    private Cliente getByNumeroCpf(String numeroCpf) {
+    public Cliente getByNumeroCpf(String numeroCpf) {
         return this.dao.getByNumeroCpf(numeroCpf);
     }
+
+
 }

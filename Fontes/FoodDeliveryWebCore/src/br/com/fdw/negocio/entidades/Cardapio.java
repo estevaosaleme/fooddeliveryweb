@@ -26,7 +26,8 @@ import javax.persistence.Table;
 {
     @NamedQuery(name = "Cardapio.findAll", query = "SELECT c FROM Cardapio c"),
     @NamedQuery(name = "Cardapio.findByCodigo", query = "SELECT c FROM Cardapio c WHERE c.codigoCardapio = :codigoCardapio"),
-    @NamedQuery(name = "Cardapio.findByNomeCardapio", query = "SELECT c FROM Cardapio c WHERE c.nomeCardapio = :nomeCardapio")
+    @NamedQuery(name = "Cardapio.findByNomeCardapio", query = "SELECT c FROM Cardapio c WHERE c.nomeCardapio = :nomeCardapio"),
+    @NamedQuery(name = "Cardapio.listByCodigoEstabelecimento", query = "SELECT c FROM Cardapio c WHERE c.estabelecimento.codigoEstabelecimento = :codigoEstabelecimento")
 })
 public class Cardapio extends PersistentObject {
     private static final long serialVersionUID = 1L;

@@ -37,6 +37,8 @@ public abstract class GenericDAO<T extends PersistentObject> {
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
+            obj = null;
+            throw  new Exception("Falha ao salvar "+e.getMessage());
         } finally {
             return obj;
         }
@@ -57,6 +59,7 @@ public abstract class GenericDAO<T extends PersistentObject> {
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
+            throw  new Exception("Falha ao salvar "+e.getMessage());
         } finally {
             return retorno;
         }

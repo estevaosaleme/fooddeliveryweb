@@ -40,4 +40,8 @@ public class ManterCliente {
     public boolean excluirCliente(int codigoCliente) {
         return this.clienteProcess.removeCliente(codigoCliente);
     }
+
+    public Cliente getByNumeroCpf(String numeroCpf){
+        return this.clienteProcess.getByNumeroCpf(numeroCpf);
+    }
 }

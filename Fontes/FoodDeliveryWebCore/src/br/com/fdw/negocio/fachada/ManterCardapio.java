@@ -35,4 +35,8 @@ public class ManterCardapio {
     public boolean excluirCardapio(Cardapio cardapio){
         return this.cardapioProcess.removeCardapio(cardapio);
     }
+
+    public List<Cardapio> listarByCodigoEstabelecimento(int codigoEstabelecimento){
+        return this.cardapioProcess.listarByCodigoEstabelecimento(codigoEstabelecimento);
+    }
 }

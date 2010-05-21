@@ -63,4 +63,8 @@ public class PratoProcess {
     public Prato getByNomeECardapio(String nomePrato, int codigoCardapio){
         return this.dao.getByNomeECardapio(nomePrato, codigoCardapio);
     }
+
+    public List<Prato> listarByCodigoCadapio(int codigoCardapio) {
+        return this.dao.listarByCodigoCardapio(codigoCardapio);
+    }
 }

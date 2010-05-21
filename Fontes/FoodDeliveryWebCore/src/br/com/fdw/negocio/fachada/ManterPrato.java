@@ -37,4 +37,7 @@ public class ManterPrato {
         return this.pratoProcess.removePrato(codigoPrato);
     }
 
+    public List<Prato> listarByCodigoCardapio(int codigoCardapio){
+        return this.pratoProcess.listarByCodigoCadapio(codigoCardapio);
+    }
 }

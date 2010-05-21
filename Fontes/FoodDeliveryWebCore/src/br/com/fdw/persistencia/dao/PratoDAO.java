@@ -32,4 +32,15 @@ public class PratoDAO extends GenericDAO<Prato> {
             return null;
         }
     }
+
+    public List<Prato> listarByCodigoCardapio(int codigoCardapio) {
+        String namedQuery = "Prato.listByCodigoCardapio";
+        Query query = ConnFactory.getEntityManager().createNamedQuery(namedQuery);
+        query.setParameter("cardapio", codigoCardapio);
+        try {
+            return (List<Prato>)query.getResultList();
+        } catch (NoResultException noResultException) {
+            return null;
+        }
+    }
 }
