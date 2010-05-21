@@ -5,7 +5,9 @@
 
 package fdw.web.adm;
 
+import br.com.fdw.negocio.entidades.Cep;
 import br.com.fdw.negocio.entidades.Estabelecimento;
+import br.com.fdw.negocio.fachada.ManterCep;
 import br.com.fdw.negocio.fachada.ManterEstabelecimento;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import fdw.web.SessionBean1;
@@ -13,6 +15,7 @@ import fdw.web.RequestBean1;
 import fdw.web.ApplicationBean1;
 import java.util.List;
 import javax.faces.FacesException;
+import javax.faces.event.ValueChangeEvent;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -146,6 +149,7 @@ public class manterEstabelecimento extends AbstractPageBean {
 	
     private void limparCamposFormulario() {
         getRequestBean1().setEstabelecimento(new Estabelecimento());
+        getRequestBean1().setCepTemporario("");
     }
 
     private String atualizaLista(){
@@ -153,6 +157,8 @@ public class manterEstabelecimento extends AbstractPageBean {
             ManterEstabelecimento facade = new ManterEstabelecimento();
             List estabelecimentos = facade.listarEstabelecimentos();
             getSessionBean1().getEstabelecimentoProvider().setList(estabelecimentos);
+            getSessionBean1().getEstabelecimentoOptionsList().setList(estabelecimentos);
+            getSessionBean1().getEstabelecimentoOptionsList().setSelectedValue("0");
         } catch (Exception e) {
             error(e.getMessage());
         }
@@ -164,6 +170,7 @@ public class manterEstabelecimento extends AbstractPageBean {
             ManterEstabelecimento manterestabelecimento = new ManterEstabelecimento();
             Estabelecimento estabelecimento = manterestabelecimento.listarEstabelecimento(selecionado);
             getRequestBean1().setEstabelecimento(estabelecimento);
+            getRequestBean1().setCepTemporario(estabelecimento.getCep().getNumeroCep());
         }
         catch (Exception e) {
                 error(e.getMessage());
@@ -180,8 +187,10 @@ public class manterEstabelecimento extends AbstractPageBean {
         try {
             Estabelecimento estabelecimento = getRequestBean1().getEstabelecimento();
             ManterEstabelecimento facade = new ManterEstabelecimento();
-            facade.incluirEstabelecimento(estabelecimento);
-            info("Registro inserido com sucesso!");
+            if (facade.incluirEstabelecimento(estabelecimento) == null)
+                info("Falha ao inserir registro");
+            else
+                info("Registro inserido com sucesso!");
             limparCamposFormulario();
             return atualizaLista();
         } catch (Exception e) {
@@ -194,8 +203,10 @@ public class manterEstabelecimento extends AbstractPageBean {
         try {
             Estabelecimento estabelecimento = getRequestBean1().getEstabelecimento();
             ManterEstabelecimento facade = new ManterEstabelecimento();
-            facade.alterarEstabelecimento(estabelecimento);
-            info("Registro atualizado com sucesso!");
+            if (facade.alterarEstabelecimento(estabelecimento) == null)
+                info("Falha ao atualizar registro");
+            else
+                info("Registro atualizado com sucesso!");
             limparCamposFormulario();
             return atualizaLista();
         } catch (Exception e) {
@@ -217,6 +228,15 @@ public class manterEstabelecimento extends AbstractPageBean {
         }
         return null;
     }
-    
+
+     public void txtCep_processValueChange(ValueChangeEvent event) {
+        String cep = (String) event.getNewValue();
+        ManterCep facade = new ManterCep();
+        Cep objCep = facade.getByNumeroCep(cep);
+        if (objCep == null)
+            info("Cep inválido, não exite cadastrado");
+        else
+            getRequestBean1().getEstabelecimento().setCep(objCep);
+    }
 }
 

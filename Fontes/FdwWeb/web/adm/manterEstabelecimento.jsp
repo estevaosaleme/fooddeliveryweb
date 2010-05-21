@@ -55,6 +55,10 @@
                                         <webuijsf:textField columns="20" id="txtcnpj" maxLength="20" text="#{RequestBean1.estabelecimento.numeroCnpj}"/>
                                         <webuijsf:label for="txtnslogan" id="lblslogan" text="Slogan"/>
                                         <webuijsf:textField columns="100" id="txtslogan" maxLength="100" text="#{RequestBean1.estabelecimento.slogan}"/>
+                                        <webuijsf:label for="txtCep" id="lblCep" text="CEP"/>
+                                        <webuijsf:textField columns="9" id="txtCep" maxLength="9"
+                                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'panelCampos:txtCep');"
+                                            text="#{RequestBean1.cepTemporario}" valueChangeListenerExpression="#{adm$manterEstabelecimento.txtCep_processValueChange}"/>
                                         <webuijsf:label for="txtendereco" id="lblendereco" text="Endereço"/>
                                         <webuijsf:textField columns="100" id="txtendereco" maxLength="100" text="#{RequestBean1.estabelecimento.endereco}"/>
                                         <webuijsf:label for="txtEmail" id="lblEmail" text="Email"/>

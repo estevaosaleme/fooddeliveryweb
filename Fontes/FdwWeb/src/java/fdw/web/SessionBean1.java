@@ -5,7 +5,6 @@
 package fdw.web;
 
 import br.com.fdw.negocio.entidades.Prato;
-import br.com.fdw.negocio.entidades.Prato;
 import br.com.fdw.negocio.fachada.ManterCliente;
 import br.com.fdw.negocio.fachada.ManterEstabelecimento;
 import br.com.fdw.negocio.fachada.ManterPrato;

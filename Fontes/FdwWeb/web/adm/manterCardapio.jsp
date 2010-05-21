@@ -47,7 +47,7 @@
                                         <webuijsf:textField columns="50" id="txtCardapio" text="#{RequestBean1.cardapio.nomeCardapio}"/>
                                         <webuijsf:label for="cmbEstabelecimentos" id="lblEstebelecimento" text="Estabelecimento"/>
                                         <webuijsf:dropDown id="cmbEstabelecimentos" items="#{SessionBean1.estabelecimentoOptionsList.options}"
-                                            selected="#{SessionBean1.estabelecimentoOptionsList.selectedValue}" valueChangeListenerExpression="#{adm$manterCardapio.cmbEstabelecimentos_processValueChange}"/>
+                                            selected="#{SessionBean1.estabelecimentoOptionsList.selectedValue}"/>
                                     </h:panelGrid>
                                     <webuijsf:hiddenField id="hddcodigoCardapio" text="#{RequestBean1.cardapio.codigoCardapio}"/>
                                     <h:panelGrid columns="5" id="panelBotoes">

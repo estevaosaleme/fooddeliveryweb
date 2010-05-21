@@ -185,6 +185,10 @@ public class manterCardapio extends AbstractPageBean {
         try {
             Cardapio card = getRequestBean1().getCardapio();
             ManterCardapio facade = new ManterCardapio();
+            if (!SetaEstabelecimento(card)) {
+                info("Estabelecimento nao selecionado");
+                return null;
+            }
             if (facade.incluirCardapio(card) == null)
                 info("Falha ao inserir registro!");
             else
@@ -201,8 +205,14 @@ public class manterCardapio extends AbstractPageBean {
        try {
             Cardapio card = getRequestBean1().getCardapio();
             ManterCardapio facade = new ManterCardapio();
-            facade.alterarCardapio(card);
-            info("Registro atualizado com sucesso!");
+            if (!SetaEstabelecimento(card)) {
+                info("Estabelecimento nao selecionado");
+                return null;
+            }
+            if (facade.alterarCardapio(card) == null)
+                info("Falha ao inserir registro");
+            else
+                info("Registro atualizado com sucesso!");
             limparCamposFormulario();
             return atualizaLista();
         } catch (Exception e) {
@@ -226,14 +236,27 @@ public class manterCardapio extends AbstractPageBean {
         return null;
     }
 
-    public void cmbEstabelecimentos_processValueChange(ValueChangeEvent event) {
-        System.out.println("manterCardapio.cmdEstabelecimentos_processValueChange");
-
-        int CodigoEstabelecimento = Integer.parseInt((String) event.getNewValue());
-        ManterEstabelecimento facade = new ManterEstabelecimento();
-        Estabelecimento est = facade.listarEstabelecimento(CodigoEstabelecimento);
-       
-        getRequestBean1().getCardapio().setEstabelecimento(est);
+    private boolean SetaEstabelecimento(Cardapio card) {
+        String EstSel = getSessionBean1().getEstabelecimentoOptionsList().getSelectedValue().toString();
+        if (EstSel == null || EstSel.equals("") || EstSel.equals("0"))
+        {
+            return false;
+        }
+        int CodigoEstabelecimento = Integer.parseInt(EstSel);
+        ManterEstabelecimento facadeEst = new ManterEstabelecimento();
+        Estabelecimento est = facadeEst.listarEstabelecimento(CodigoEstabelecimento);
+        card.setEstabelecimento(est);
+        return true;
     }
+
+//    public void cmbEstabelecimentos_processValueChange(ValueChangeEvent event) {
+//        System.out.println("manterCardapio.cmdEstabelecimentos_processValueChange");
+//
+//        int CodigoEstabelecimento = Integer.parseInt((String) event.getNewValue());
+//        ManterEstabelecimento facade = new ManterEstabelecimento();
+//        Estabelecimento est = facade.listarEstabelecimento(CodigoEstabelecimento);
+//
+//        getRequestBean1().getCardapio().setEstabelecimento(est);
+//    }
 }
 
