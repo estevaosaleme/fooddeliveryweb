@@ -24,8 +24,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Prato.findAll", query = "SELECT p FROM Prato p"),
     @NamedQuery(name = "Prato.findByCodigo", query = "SELECT p FROM Prato p WHERE p.codigoPrato = :codigoPrato"),
     @NamedQuery(name = "Prato.findByNomeECardapio", query = "SELECT p FROM Prato p WHERE p.nomePrato = :nomePrato AND p.cardapio.codigoCardapio = :codigoCardapio"),
-    @NamedQuery(name = "Prato.listByCodigoCardapio", query = "SELECT p FROM Prato p WHERE p.cardapio.codigoCardapio = :cardapio")
-
+    @NamedQuery(name = "Prato.listByCodigoCardapio", query = "SELECT p FROM Prato p WHERE p.cardapio.codigoCardapio = :cardapio"),
+    @NamedQuery(name = "Prato.listByRandom", query = "SELECT p FROM Prato p ORDER BY RAND()")
 }
 )
 public class Prato extends PersistentObject {

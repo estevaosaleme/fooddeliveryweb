@@ -40,4 +40,9 @@ public class ManterPrato {
     public List<Prato> listarByCodigoCardapio(int codigoCardapio){
         return this.pratoProcess.listarByCodigoCadapio(codigoCardapio);
     }
+
+    public List<Prato> listByRandom(int limite) {
+        return this.pratoProcess.listByRandom(limite);
+    }
+
 }

@@ -126,33 +126,17 @@ public class SessionBean1 extends AbstractSessionBean {
 
     private void setaPratosHome() {
         ManterPrato facade = new ManterPrato();
-        List<Prato> lstPrato = facade.listarPratos();
-        if (lstPrato.size() <= 0)
-        {
-            Prato fake = new Prato();
-            fake.setCodigoPrato(0);
-            fake.setNomePrato("Nenhum prato cadastrado");
-            fake.setValorUnitario(0);
-            setPrato1(fake);
-            setPrato2(fake);
-            setPrato3(fake);
-            setPrato4(fake);
-            setPrato5(fake);
-            setPrato6(fake);
-        }
-        Random rd = new Random();
-        int item1 = rd.nextInt(lstPrato.size());
-        setPrato1(lstPrato.get(item1));
-        int item2 = rd.nextInt(lstPrato.size());
-        setPrato2(lstPrato.get(item2));
-        int item3 = rd.nextInt(lstPrato.size());
-        setPrato3(lstPrato.get(item3));
-        int item4 = rd.nextInt(lstPrato.size());
-        setPrato4(lstPrato.get(item4));
-        int item5 = rd.nextInt(lstPrato.size());
-        setPrato5(lstPrato.get(item5));
-        int item6 = rd.nextInt(lstPrato.size());
-        setPrato6(lstPrato.get(item6));
+        List<Prato> lstPrato = facade.listByRandom(6);
+        Prato fake = new Prato();
+        fake.setCodigoPrato(0);
+        fake.setNomePrato("Nenhum prato cadastrado");
+        fake.setValorUnitario(0);
+        if (lstPrato.size()>=1) setPrato1(lstPrato.get(0)); else  setPrato1(fake);
+        if (lstPrato.size()>=2) setPrato2(lstPrato.get(1)); else  setPrato1(fake);
+        if (lstPrato.size()>=3) setPrato3(lstPrato.get(2)); else  setPrato1(fake);
+        if (lstPrato.size()>=4) setPrato4(lstPrato.get(3)); else  setPrato1(fake);
+        if (lstPrato.size()>=5) setPrato5(lstPrato.get(4)); else  setPrato1(fake);
+        if (lstPrato.size()>=6) setPrato6(lstPrato.get(5)); else  setPrato1(fake);
     }
 
     private void CarregaListas() {

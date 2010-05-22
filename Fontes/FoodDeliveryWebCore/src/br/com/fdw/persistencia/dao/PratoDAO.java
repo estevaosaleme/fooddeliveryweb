@@ -43,4 +43,15 @@ public class PratoDAO extends GenericDAO<Prato> {
             return null;
         }
     }
+
+    public List<Prato> listByRandom(int limite) {
+        String namedQuery = "Prato.listByRandom";
+        Query query = ConnFactory.getEntityManager().createNamedQuery(namedQuery);
+        query.setMaxResults(limite);
+        try {
+            return (List<Prato>)query.getResultList();
+        } catch (NoResultException noResultException) {
+            return null;
+        }
+    }
 }

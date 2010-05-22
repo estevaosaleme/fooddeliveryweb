@@ -67,4 +67,8 @@ public class PratoProcess {
     public List<Prato> listarByCodigoCadapio(int codigoCardapio) {
         return this.dao.listarByCodigoCardapio(codigoCardapio);
     }
+
+    public List<Prato> listByRandom(int limite) {
+        return this.dao.listByRandom(limite);
+    }
 }
