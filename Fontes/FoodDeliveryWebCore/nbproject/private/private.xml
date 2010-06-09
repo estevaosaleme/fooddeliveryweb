@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/persistencia/dao/GenericDAO.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/negocio/fachada/ManterCardapio.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/negocio/processo/CardapioProcess.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/persistencia/dao/CardapioDAO.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/negocio/entidades/Prato.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/negocio/processo/PratoProcess.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/persistencia/dao/PratoDAO.java</file>
+        <file>file:/C:/Pedro/Proj/FDW/Fontes/FoodDeliveryWebCore/src/br/com/fdw/negocio/fachada/ManterPrato.java</file>
+    </open-files>
 </project-private>
