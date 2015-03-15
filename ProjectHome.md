@@ -1,0 +1,1 @@
+Projeto de sistema de software livre para atender a demanda por solicitações online de entrega de qualquer tipo de comida para qualquer restaurante, bar, lanchonete, etc, que queira se associar a uma determinada rede provida pelo sistema e que tenha serviço de delivery próprio.
